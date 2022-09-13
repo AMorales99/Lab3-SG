@@ -4,115 +4,108 @@
 
 void display();
 void Menu (int value);
-void Figuras (int value);
-void cruz();
+
 void display()
-{
-    glClearColor(0.2,0.2,0.2,0.0);
-    glMatrixMode(GL_PROJECTION);
-    gluOrtho2D(-40,40,-40,40);
+{   glClearColor(0,0,0,0);
+    gluOrtho2D(-20,20,-20,20);
     glFlush();
 }
+
+void flecha(){
+    glClear(GL_COLOR_BUFFER_BIT); //limpia la ventana
+    glRecti(-6,2,2,-1);
+    glBegin(GL_TRIANGLES);
+        glVertex2i(2,4);
+        glVertex2f(6,0.5);
+        glVertex2i(2,-3);
+    glEnd();
+    glFlush();
+}
+
+void paralelogramo(){
+    glClear(GL_COLOR_BUFFER_BIT);
+   glBegin(GL_QUADS);
+    glVertex2f(-3,-2);glVertex2f(-1.8,5);
+    glVertex2f(3,5);glVertex2f(1.8,-2);
+    glEnd();
+    glFlush();
+}
+
+void trapecio(){
+    glClear(GL_COLOR_BUFFER_BIT);
+   glBegin(GL_QUADS);
+    glVertex2f(-4,-3);glVertex2f(-2.4,6);
+    glVertex2f(1.4,6);glVertex2f(3,-3);
+    glEnd();
+    glFlush();
+}
+
 
 int main (int argc, char ** argv)
 {
     glutInit (&argc, argv);
     glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowPosition(200,250);
-    glutInitWindowSize(500,600);
+    glutInitWindowSize(600,600);
+
+    int x = abs((GetSystemMetrics(SM_CXSCREEN)-600)/2);
+    int y = abs((GetSystemMetrics(SM_CYSCREEN)-600)/2);
+
+    glutInitWindowPosition(x,y);
+
     glutCreateWindow("Menu");
 
     int sub1=glutCreateMenu (Menu);
+        glutAddMenuEntry("Flecha", 11);
+        glutAddMenuEntry("Paralelogramo", 12);
+        glutAddMenuEntry("Trapecio", 13);
 
-    glutAddMenuEntry("Rojo", 1);
-    glutAddMenuEntry("Azul", 2);
-    glutAddMenuEntry("Verde", 3);
-    glutAddMenuEntry("Amarillo", 4);
-     glutAddMenuEntry("Purpura", 5);
+    int sub2=glutCreateMenu (Menu);
+        glutAddMenuEntry("Rojo", 21);
+        glutAddMenuEntry("Azul", 22);
+        glutAddMenuEntry("Verde", 23);
+        glutAddMenuEntry("Amarillo", 24);
+        glutAddMenuEntry("Purpura", 25);
 
-    int sub2=glutCreateMenu (Figuras);
-
-    glutAddMenuEntry("Cometa", 1);
-    glutAddMenuEntry("Trebol de tres hojas", 2);
-    glutAddMenuEntry("Estrella", 3);
-    glutAddMenuEntry("Hexagono", 4);
-     glutAddMenuEntry("Luna creciente", 5);
-    glutAddMenuEntry("Cruz", 6);
-    glutAddMenuEntry("Corazon", 7);
-    glutAddMenuEntry("Trebol de cuatro hojas", 8);
-
-    glutCreateMenu (Menu);
-
-    glutAddSubMenu("Colores", sub1);
-    glutAddSubMenu ("Figuras", sub2);
-    glutAddMenuEntry("Salida", 6);
-    glutAttachMenu(GLUT_RIGHT_BUTTON);
-    glutDisplayFunc(display);
-    glutMainLoop();
-
+        glutCreateMenu (Menu);
+        glutAddSubMenu("Figuras", sub1);
+        glutAddSubMenu("Colores", sub2);
+        glutAddMenuEntry("Salida", 26);
+        glutAttachMenu(GLUT_RIGHT_BUTTON);
+        glutDisplayFunc(display);
+        glutMainLoop();
 }
 
 void Menu(int value)
 {
     switch(value)
     {
-    case 1:
+    case 11:
+        glutDisplayFunc(flecha);
+        break;
+    case 12:
+        glutDisplayFunc(paralelogramo);
+        break;
+    case 13:
+        glutDisplayFunc(trapecio);
+        break;
+
+    case 21:
         glColor3f(1.0,0.0,0.0);
         break;
-    case 2:
+    case 22:
         glColor3f(0.0,0.0,1.0);
         break;
-            case 3:
+    case 23:
         glColor3f(0.0,1.0,0.0);
         break;
-         case 4:
+    case 24:
         glColor3f(1.0,1.0,0.0);
         break;
-        case 5:
+    case 25:
         glColor3f(1.0,0.0,1.0);
         break;
-            case 6:
-        exit (0);
-        break;
+    case 26:
+        exit(0);
     }
     glutPostRedisplay();
-}
-
-void Figuras (int value)
-{
-    switch(value)
-    {
-    case 1:
-        glColor3f(1.0,0.0,0.0);
-        break;
-    case 2:
-        glColor3f(0.0,0.0,1.0);
-        break;
-    case 3:
-        glColor3f(0.0,1.0,0.0);
-        break;
-         case 4:
-        glColor3f(1.0,1.0,0.0);
-        break;
-    case 5:
-        glColor3f(1.0,0.0,1.0);
-        break;
-    case 6:
-        cruz();
-        break;
-    case 7:
-        break;
-    case 8:
-        break;
-
-    }
-    glutPostRedisplay();
-}
-
-void cruz()
-{
-    glColor3f(1.0,0.0,0.0);
-    glRecti(-2,8,2,-8);
-    glRecti(-8,2,8,-2);
-    glEnd();
 }
