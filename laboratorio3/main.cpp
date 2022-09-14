@@ -33,9 +33,9 @@ void paralelogramo(){
 
 void trapecio(){
     glClear(GL_COLOR_BUFFER_BIT);
-   glBegin(GL_QUADS);
-    glVertex2f(-4,-3);glVertex2f(-2.4,6);
-    glVertex2f(1.4,6);glVertex2f(3,-3);
+    glBegin(GL_QUADS);
+        glVertex2f(-4,-3);glVertex2f(-2.4,6);
+        glVertex2f(1.4,6);glVertex2f(3,-3);
     glEnd();
     glFlush();
 }
@@ -44,6 +44,22 @@ void cruz(){
     glClear(GL_COLOR_BUFFER_BIT); //limpia la ventana
     glRecti(-6,2,6,-2);
     glRecti(-2,6,2,-6);
+    glFlush();
+}
+
+void hexagono(){
+    glClear(GL_COLOR_BUFFER_BIT); //limpia la ventana
+    glRecti(-6,3,6,-3);
+    glBegin(GL_TRIANGLES);
+        glVertex2i(-6,3);
+        glVertex2i(0,6);
+        glVertex2i(6,3);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+        glVertex2i(-6,-3);
+        glVertex2i(0,-6);
+        glVertex2i(6,-3);
+    glEnd();
     glFlush();
 }
 
@@ -66,6 +82,7 @@ int main (int argc, char ** argv)
         glutAddMenuEntry("Paralelogramo", 12);
         glutAddMenuEntry("Trapecio", 13);
         glutAddMenuEntry("Cruz", 14);
+        glutAddMenuEntry("Hexagono", 15);
 
     int sub2=glutCreateMenu (Menu);
         glutAddMenuEntry("Rojo", 21);
@@ -99,6 +116,10 @@ void Menu(int value)
     case 14:
         glutDisplayFunc(cruz);
         break;
+    case 15:
+        glutDisplayFunc(hexagono);
+        break;
+
 
     case 21:
         glColor3f(1.0,0.0,0.0);
