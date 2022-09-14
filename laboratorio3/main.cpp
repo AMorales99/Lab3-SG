@@ -78,6 +78,31 @@ void cometa(){
     glFlush();
 }
 
+void rombo(){
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_TRIANGLES);
+        glVertex2i(-6,0);
+        glVertex2i(0,8);
+        glVertex2i(6,0);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+        glVertex2i(-6,0);
+        glVertex2i(0,-8);
+        glVertex2i(6,0);
+    glEnd();
+    glFlush();
+}
+
+void triangulo(){
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBegin(GL_TRIANGLES);
+        glVertex2i(-6,0);
+        glVertex2i(0,7);
+        glVertex2i(6,0);
+    glEnd();
+    glFlush();
+}
+
 int main (int argc, char ** argv)
 {
     glutInit (&argc, argv);
@@ -98,6 +123,8 @@ int main (int argc, char ** argv)
         glutAddMenuEntry("Cruz", 14);
         glutAddMenuEntry("Hexagono", 15);
         glutAddMenuEntry("Cometa", 16);
+        glutAddMenuEntry("Rombo", 17);
+        glutAddMenuEntry("Triangulo", 18);
 
     int sub2=glutCreateMenu (Menu);
         glutAddMenuEntry("Rojo", 21);
@@ -136,6 +163,12 @@ void Menu(int value)
         break;
     case 16:
         glutDisplayFunc(cometa);
+        break;
+    case 17:
+        glutDisplayFunc(rombo);
+        break;
+    case 18:
+        glutDisplayFunc(triangulo);
         break;
 
 
