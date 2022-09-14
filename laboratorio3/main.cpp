@@ -63,6 +63,20 @@ void hexagono(){
     glFlush();
 }
 
+void cometa(){
+    glClear(GL_COLOR_BUFFER_BIT); //limpia la ventana
+    glBegin(GL_TRIANGLES);
+        glVertex2i(-6,2);
+        glVertex2i(0,6);
+        glVertex2i(6,2);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+        glVertex2i(-6,2);
+        glVertex2i(0,-6);
+        glVertex2i(6,2);
+    glEnd();
+    glFlush();
+}
 
 int main (int argc, char ** argv)
 {
@@ -83,6 +97,7 @@ int main (int argc, char ** argv)
         glutAddMenuEntry("Trapecio", 13);
         glutAddMenuEntry("Cruz", 14);
         glutAddMenuEntry("Hexagono", 15);
+        glutAddMenuEntry("Cometa", 16);
 
     int sub2=glutCreateMenu (Menu);
         glutAddMenuEntry("Rojo", 21);
@@ -118,6 +133,9 @@ void Menu(int value)
         break;
     case 15:
         glutDisplayFunc(hexagono);
+        break;
+    case 16:
+        glutDisplayFunc(cometa);
         break;
 
 
