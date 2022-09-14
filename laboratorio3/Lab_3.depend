@@ -208,7 +208,7 @@
 1301111156 c:\program files (x86)\codeblocks\mingw\include\oleidl.h
 	<objfwd.h>
 
-1660176457 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
+976692172 c:\program files (x86)\codeblocks\mingw\include\gl\glut.h
 	<windows.h>
 	<GL/gl.h>
 	<GL/glu.h>
@@ -220,6 +220,11 @@
 	<GL/gl.h>
 
 1663107564 source:c:\users\kquie\onedrive\escritorio\opengl\lab_3\main.cpp
+	<stdlib.h>
+	<windows.h>
+	<gl/glut.h>
+
+1663164655 source:c:\users\super\desktop\proyectos opengl\github\lab3-sg\laboratorio3\main.cpp
 	<stdlib.h>
 	<windows.h>
 	<gl/glut.h>
